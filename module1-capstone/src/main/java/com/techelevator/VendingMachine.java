@@ -15,8 +15,7 @@ public class VendingMachine {
 	
 	DecimalFormat decimalFormat = new DecimalFormat();
 	private BigDecimal 					moneyFedBalance;
-	private List<String>				vendingMachineItems;
-	private Map<String, List<String>>   items;
+	private Map<String, List<VendingMachineItem>>   items;
 	
 
 				

@@ -4,12 +4,12 @@ import java.math.BigDecimal;
 
 public class GumItem extends VendingMachineItem {
 
-	public GumItem(String name, BigDecimal cost, int itemCount) {
-		super(name, cost, itemCount);
+	public GumItem(String name, BigDecimal cost) {
+		super(name, cost);
 	}
 	@Override
 	public String Consume() {
-		setItemCount(getItemCount() - 1);
+		
 		return "Chew Chew, Yum!";
 	}
 
