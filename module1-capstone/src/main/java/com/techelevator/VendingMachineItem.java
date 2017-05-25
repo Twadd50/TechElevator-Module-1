@@ -13,7 +13,9 @@ public abstract class VendingMachineItem {
 		this.cost 	   = cost;
 		this.itemCount = itemCount;
 	}
+	
 	abstract public String Consume();
+	
 	public String getName() {
 		return name;
 	}

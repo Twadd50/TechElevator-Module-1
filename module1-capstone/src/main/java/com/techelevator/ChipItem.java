@@ -10,7 +10,8 @@ public class ChipItem extends VendingMachineItem {
 	
 	@Override
 	public String Consume() {
-		return null;
+		setItemCount(getItemCount() - 1);
+		return "Crunch Crunch, Yum!";
 	}
 
 }

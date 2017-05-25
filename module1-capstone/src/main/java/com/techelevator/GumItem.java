@@ -9,7 +9,8 @@ public class GumItem extends VendingMachineItem {
 	}
 	@Override
 	public String Consume() {
-		return null;
+		setItemCount(getItemCount() - 1);
+		return "Chew Chew, Yum!";
 	}
 
 }

@@ -11,8 +11,8 @@ public class CandyItem extends VendingMachineItem {
 
 	@Override
 	public String Consume() {
-		// TODO Auto-generated method stub
-		return null;
+		setItemCount(getItemCount() - 1); 
+		return "Munch Munch, Yum!";
 	}
 
 	
