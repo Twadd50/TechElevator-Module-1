@@ -11,8 +11,9 @@ import java.util.Scanner;
 
 public class ProductImport {
 	// "module1-capstone/vendingmachine.csv"
+	static Map<String, List<VendingMachineItem>> productMap = new HashMap<>();
 	public Map<String, List<VendingMachineItem>> readInventory(String filePath) {
-		Map<String, List<VendingMachineItem>> productMap = new HashMap<>();
+	
 
 		/*Import data from a CSV file into a Map by using a Scanner to read each line of the imported file. (Line 25-28)
 		 * The data on each line is separated by the pipe delimiter ("|"). (Line 29)

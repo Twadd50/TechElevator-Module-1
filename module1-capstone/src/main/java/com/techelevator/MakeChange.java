@@ -9,7 +9,7 @@ public class MakeChange {
 	public MakeChange() {
 
 	}
-
+														//can this machine return bills before change if given bigger bills
 	public void changeAmount(int amtInCents) {
 
 		while (amtInCents >= 25) {

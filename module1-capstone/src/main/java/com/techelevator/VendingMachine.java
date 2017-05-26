@@ -9,7 +9,7 @@ public class VendingMachine {
 	private BigDecimal availableSpendingBalance;
 	private Map<String, List<VendingMachineItem>> items;
 
-	// Constructor
+	// info will be pulled into vending machine
 	public VendingMachine(Map<String, List<VendingMachineItem>> items) {
 		this.items = items;
 	}
@@ -27,7 +27,7 @@ public class VendingMachine {
 	}
 
 	// Checking the list if it contains a value for the slotName provided
-	public boolean IsSoldOut(String slotName) {
+	public boolean IsSoldOut(String slotName) {   			
 		return items.containsKey(slotName);
 	}
 
