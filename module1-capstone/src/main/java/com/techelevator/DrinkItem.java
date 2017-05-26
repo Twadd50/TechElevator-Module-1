@@ -10,8 +10,6 @@ public class DrinkItem extends VendingMachineItem {
 
 	@Override
 	public String Consume() {
-
 		return "Glug Glug, Yum!";
 	}
-
 }

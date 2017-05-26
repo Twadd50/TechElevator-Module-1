@@ -1,45 +1,41 @@
 package com.techelevator;
 
-
-import java.io.File;
 import java.math.BigDecimal;
-import java.text.DecimalFormat;
-import java.util.HashMap;
 import java.util.List;
 import java.util.Map;
-import java.util.Scanner;
 
 public class VendingMachine {
-	
-	
-	
-	DecimalFormat decimalFormat = new DecimalFormat();
-	private BigDecimal 					moneyFedBalance;
-	private Map<String, List<VendingMachineItem>>   items;
-	
 
-				
+	private BigDecimal availableSpendingBalance;
+	private Map<String, List<VendingMachineItem>> items;
 
-	public BigDecimal FeedMoney(BigDecimal dollars) {
-		moneyFedBalance = dollars;
-		return moneyFedBalance; 	
+	// Constructor
+	public VendingMachine(Map<String, List<VendingMachineItem>> items) {
+		this.items = items;
 	}
 
-	public boolean IsSoldOut(String slot) {
-		return false;
-		}
-
-	
-	public String Purchase(String slot, int feedMoney) {
-		
-		return "hi";
+	// Available spending balance for the customer to make a purchase
+	public BigDecimal feedMoney(BigDecimal dollars) {
+		availableSpendingBalance.add(dollars);
+		return availableSpendingBalance;
 	}
 
-	public BigDecimal CompleteTransaction( BigDecimal change) {
-		return moneyFedBalance;
-		
+	// Method needed to handle the purchase of an item
+	public List<VendingMachineItem> customerMakesPurchase(String slotName) {
+		List<VendingMachineItem> purchaseItem = items.get(slotName);
+		return purchaseItem;
 	}
-	
-	
+
+	// Checking the list if it contains a value for the slotName provided
+	public boolean IsSoldOut(String slotName) {
+		return items.containsKey(slotName);
+	}
+
+	// Returns the remaining balance of available funds to spend
+	public BigDecimal returnChange() {
+		BigDecimal customerChange = availableSpendingBalance;
+		return customerChange;
+
+	}
+
 }
-
