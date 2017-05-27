@@ -1,31 +1,45 @@
 package com.techelevator;
 
+import java.math.BigDecimal;
+
 public class MakeChange {
 
-	int numOfQuarters = 0;
-	int numOfDimes = 0;
-	int numOfNickels = 0;
+	BigDecimal numOfQuarters = new BigDecimal(0.00);
+	BigDecimal numOfDimes = new BigDecimal(0.00);
+	BigDecimal numOfNickels = new BigDecimal(0.00);
+
+	BigDecimal quarter = new BigDecimal(0.25);
+	BigDecimal dime = new BigDecimal(0.10);
+	BigDecimal nickel = new BigDecimal(0.10);
 
 	public MakeChange() {
 
 	}
-														//can this machine return bills before change if given bigger bills
-	public void changeAmount(int amtInCents) {
 
-		while (amtInCents >= 25) {
-			numOfQuarters = amtInCents % 25;
-			amtInCents -= (numOfQuarters * 25);
+	// can this machine return bills before change if given bigger bills
+	public String changeAmount(BigDecimal amtToReturn) {
+		// Calculate the number of quarters to return
+		// updates amtToReturn
+		while (amtToReturn.compareTo(quarter) >= 0) {
+			numOfQuarters = amtToReturn.divideToIntegralValue(quarter);
+			amtToReturn = amtToReturn.subtract(numOfQuarters.multiply(quarter));
 		}
-		while (amtInCents >= 10) {
-			numOfDimes = amtInCents % 10;
-			amtInCents -= (numOfDimes * 10);
+		// Calculate the number of dimes to return
+		// updates amtToReturn
+		while (amtToReturn.compareTo(dime) >= 0) {
+			numOfDimes = amtToReturn.divideToIntegralValue(dime);
+			amtToReturn = amtToReturn.subtract(numOfDimes.multiply(dime));
 		}
-		while (amtInCents >= 5) {
-			numOfNickels = amtInCents % 5;
-			amtInCents -= (numOfNickels * 5);
+		// Calculate the number of nickels to return
+		// updates amtToReturn
+		while (amtToReturn.compareTo(nickel) >= 0) {
+			numOfNickels = amtToReturn.divideToIntegralValue(nickel);
+			amtToReturn = amtToReturn.subtract(numOfNickels.multiply(nickel));
 		}
-		System.out.println("You will receive: " + numOfQuarters + " Quarters " + numOfDimes + " Dimes and "
-				+ numOfNickels + " Nickels.");
+
+		// Message that will print to customer
+		return "You will receive: " + numOfQuarters + " Quarters " + numOfDimes + " Dimes and " + numOfNickels
+				+ " Nickels.";
 	}
 
 }

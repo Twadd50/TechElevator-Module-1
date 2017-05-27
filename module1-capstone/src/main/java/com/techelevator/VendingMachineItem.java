@@ -4,11 +4,13 @@ import java.math.BigDecimal;
 
 public abstract class VendingMachineItem {
 
+	private String slotName;
 	private String name;
 	private BigDecimal cost;
 
 	// name & cost are being set here
-	public VendingMachineItem(String name, BigDecimal cost) {
+	public VendingMachineItem(String slotName, String name, BigDecimal cost) {
+		this.slotName = slotName;
 		this.name = name;
 		this.cost = cost;
 	}
@@ -21,6 +23,10 @@ public abstract class VendingMachineItem {
 
 	public BigDecimal getCost() {
 		return cost;
+	}
+
+	public String getSlotName() {
+		return slotName;
 	}
 
 }

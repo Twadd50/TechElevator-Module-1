@@ -4,8 +4,8 @@ import java.math.BigDecimal;
 
 public class ChipItem extends VendingMachineItem {
 
-	public ChipItem(String name, BigDecimal cost) {
-		super(name, cost);
+	public ChipItem(String slotName, String name, BigDecimal cost) {
+		super(slotName, name, cost);
 	}
 
 	@Override

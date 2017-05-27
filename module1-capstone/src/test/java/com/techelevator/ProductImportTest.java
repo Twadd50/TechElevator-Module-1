@@ -24,7 +24,7 @@ public class ProductImportTest {
 	public void testReadInventoryFileReader() {
 		Map<String, List<VendingMachineItem>> testMap = new HashMap<>();
 		
-		assertEquals(testMap, sut.readInventory("/Users/antoinnemckinney/workspace/team2-java-module1-capstone/module1-capstone/vendingmachine.csv"));
+		assertEquals(testMap, sut.readInventory("vendingmachine.csv"));
 	}
 
 }

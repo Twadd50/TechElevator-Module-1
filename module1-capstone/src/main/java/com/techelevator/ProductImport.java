@@ -11,9 +11,9 @@ import java.util.Scanner;
 
 public class ProductImport {
 	// "module1-capstone/vendingmachine.csv"
-	static Map<String, List<VendingMachineItem>> productMap = new HashMap<>();
-	public Map<String, List<VendingMachineItem>> readInventory(String filePath) {
 	
+	public Map<String, List<VendingMachineItem>> readInventory(String filePath) {
+		Map<String, List<VendingMachineItem>> productMap = new HashMap<>();
 
 		/*Import data from a CSV file into a Map by using a Scanner to read each line of the imported file. (Line 25-28)
 		 * The data on each line is separated by the pipe delimiter ("|"). (Line 29)
@@ -44,22 +44,22 @@ public class ProductImport {
 				List<VendingMachineItem> items = new ArrayList<>();
 				if(slotName.startsWith("A")){
 					for(int i = 0; i <5; i++){
-						items.add(new ChipItem(productName, productCost));
+						items.add(new ChipItem(slotName, productName, productCost));
 					}
 					productMap.put(slotName, items);
 				} else if(slotName.startsWith("B")){
 					for(int i = 0; i <5; i++){
-						items.add(new CandyItem(productName, productCost));
+						items.add(new CandyItem(slotName, productName, productCost));
 					}
 					productMap.put(slotName, items);
 				}else if(slotName.startsWith("C")){
 					for(int i = 0; i <5; i++){
-						items.add(new DrinkItem(productName, productCost));
+						items.add(new DrinkItem(slotName, productName, productCost));
 					}
 					productMap.put(slotName, items);
 				}else if(slotName.startsWith("D")){
 					for(int i = 0; i <5; i++){
-						items.add(new GumItem(productName, productCost));
+						items.add(new GumItem(slotName, productName, productCost));
 					}
 					productMap.put(slotName, items);
 					
