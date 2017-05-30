@@ -53,8 +53,14 @@ public class VendingMachineCLI {
 			String choice = (String) menu.getChoiceFromOptions(MAIN_MENU_OPTIONS);
 
 			if (choice.equals(MAIN_MENU_OPTION_VIEW_ITEMS)) {
-				System.out.println("Whatchu need?");
-				// This should print list of items
+				//Section Heading
+				System.out.println("*************************");
+				System.out.println("CHECH OUT OUR OPTIONS");
+				System.out.println("*************************");
+				
+				/*
+				 * This print out the list of item. Would like to sort them alphabetically
+				 */
 				for (String key : listOfProducts.keySet()) {
 					List<VendingMachineItem> itemsList = listOfProducts.get(key);
 					if (itemsList.isEmpty()) {
@@ -65,76 +71,82 @@ public class VendingMachineCLI {
 						System.out.println(availableItem.getSlotName() + " | " + availableItem.getName() + " | "
 								+ availableItem.getCost());
 					}
-				}
-
-				while (true) {
-					String choice2 = (String) menu.getChoiceFromOptions(MAIN_MENU_OPTIONS2);
-					// This should guide customer through purchasing process
-
-					if (choice2.equals(VIEW_ITEMS_MENU_OPTION_FEED_MONEY)) {
-						while (true) {
-							String choice5 = (String) menu.getChoiceFromOptions(MAIN_MENU_OPTIONS5);
-
-							if (choice5.equals(ONE_DOLLAR)) {
-								BigDecimal customerFeed = new BigDecimal("$1.00");
-								vm.feedMoney(customerFeed);
-
-								System.out.println("Available Funds: " + customerFeed);
-							} else if (choice5.equals(TWO_DOLLAR)) {
-								BigDecimal customerFeed = new BigDecimal("$2.00");
-								vm.feedMoney(customerFeed);
-
-								System.out.println("Available Funds: " + customerFeed);
-							} else if (choice5.equals(FIVE_DOLLAR)) {
-								BigDecimal customerFeed = new BigDecimal("$5.00");
-								vm.feedMoney(customerFeed);
-
-								System.out.println("Available Funds: " + customerFeed);
-							} else if (choice5.equals(TEN_DOLLAR)) {
-								BigDecimal customerFeed = new BigDecimal("$10.00");
-								vm.feedMoney(customerFeed);
-
-								System.out.println("Available Funds: " + customerFeed);
-							} else if (choice5.equals(VIEW_ITEMS_MENU_OPTION_EXIT)) {
-								break;
-							}
-						}
-
-					}
-
-					while (true) {
-						String choice3 = (String) menu.getChoiceFromOptions(MAIN_MENU_OPTIONS3);
-
-						if (choice3.equals(VIEW_ITEMS_MENU_OPTION_MAKE_A_SELECTION)) {
-							// UI for making purchase verify slot name
-							// vm.IsSoldOut(slotName)
-							// vm.customerMakesPurchase(slotName);
-							
-							
-							//vm.customerMakesPurchase(slotName);
-							
-						} else if (choice3.equals(MAIN_MENU_OPTION_EXIT_PROGRAM)) {
-							break;
-						}
-
-						while (true) {
-							String choice4 = (String) menu.getChoiceFromOptions(MAIN_MENU_OPTIONS4);
-
-							if (choice4.equals(VIEW_ITEMS_MENU_OPTION_CLOSE_TRANSACTION)) {
-								System.out.println("Bye");
-							} else if (choice4.equals(MAIN_MENU_OPTION_EXIT_PROGRAM)) {
-								break;
-							}
-
-						}
-					}
-
-				}
+				}//closes the forLoop
 
 			} else if (choice.equals(MAIN_MENU_OPTION_EXIT_PROGRAM)) {
 				break;
 			}
-		}
+			while (true) {
+				String choice2 = (String) menu.getChoiceFromOptions(MAIN_MENU_OPTIONS2);
+				/*
+				 * At this point we are guiding the customer through purchasing process
+				 */
+				
+				
+				if (choice2.equals(VIEW_ITEMS_MENU_OPTION_FEED_MONEY)) {
+					while (true) {
+						String choice5 = (String) menu.getChoiceFromOptions(MAIN_MENU_OPTIONS5);
+						
+						/*
+						 * The customer availableSpendingBalance is being calculated and stored on the VendingMachine.java file.
+						 * With the balance on the vending machine set to "0.00", the customer is able to feed money to the
+						 * vending machine to prepare for a purchase. The customer can only add $1, $2, $5, $10.
+						 */
+						
+						if (choice5.equals(ONE_DOLLAR)) {
+							BigDecimal customerFeed = new BigDecimal("1.00");
+							//add $1 to the current balance
+							vm.feedMoney(customerFeed);
+						} else if (choice5.equals(TWO_DOLLAR)) {
+							BigDecimal customerFeed = new BigDecimal("2.00");
+							//add $2 to the current balance
+							vm.feedMoney(customerFeed);
+						} else if (choice5.equals(FIVE_DOLLAR)) {
+							BigDecimal customerFeed = new BigDecimal("5.00");
+							//add $5 to the current balance
+							vm.feedMoney(customerFeed);
+						} else if (choice5.equals(TEN_DOLLAR)) {
+							BigDecimal customerFeed = new BigDecimal("10.00");
+							//add $10 to the current balance
+							vm.feedMoney(customerFeed);
+						} else if (choice5.equals(VIEW_ITEMS_MENU_OPTION_EXIT)) {
+							break;
+						}
+						
+						System.out.println("\nYour Updated Spending Balance: $"+ vm.getAvailableSpendingBalance());
+					}//closes whileLoop for customer money feed
+
+				}//close if-statement for Feed Money
+				while (true) {
+					String choice3 = (String) menu.getChoiceFromOptions(MAIN_MENU_OPTIONS3);
+
+					if (choice3.equals(VIEW_ITEMS_MENU_OPTION_MAKE_A_SELECTION)) {
+						// UI for making purchase verify slot name
+						// vm.IsSoldOut(slotName)
+						// vm.customerMakesPurchase(slotName);
+						
+						
+						//vm.customerMakesPurchase(slotName);
+						
+					} else if (choice3.equals(MAIN_MENU_OPTION_EXIT_PROGRAM)) {
+						break;
+					}
+					while (true) {
+						String choice4 = (String) menu.getChoiceFromOptions(MAIN_MENU_OPTIONS4);
+
+						if (choice4.equals(VIEW_ITEMS_MENU_OPTION_CLOSE_TRANSACTION)) {
+							System.out.println("Bye");
+						} else if (choice4.equals(MAIN_MENU_OPTION_EXIT_PROGRAM)) {
+							break;
+						}
+
+					}//Closes the whileLoop Menu 4
+					
+				}//Closes the whileLoop Menu 3
+				
+
+			}//Closes the whileLoop Menu 2
+		}//Closes the whileLoop Menu 1
 	}
 
 	// This is the command line program

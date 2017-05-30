@@ -7,7 +7,7 @@ import java.util.Map;
 
 public class VendingMachine {
 
-	private BigDecimal availableSpendingBalance;
+	private BigDecimal availableSpendingBalance = new BigDecimal("0.00");
 	private Map<String, List<VendingMachineItem>> items;
 
 	// info will be pulled into vending machine
@@ -17,8 +17,7 @@ public class VendingMachine {
 
 	// Available spending balance for the customer to make a purchase
 	public BigDecimal feedMoney(BigDecimal dollars) {
-		availableSpendingBalance.add(new BigDecimal("0.00"));
-		availableSpendingBalance.add(dollars);
+		availableSpendingBalance = availableSpendingBalance.add(dollars);
 		return availableSpendingBalance;
 	}
 
@@ -50,6 +49,14 @@ public class VendingMachine {
 		String dispenseMessage = changeDispenser.changeAmount(availableSpendingBalance);
 		availableSpendingBalance = BigDecimal.ZERO;
 		return dispenseMessage;
+	}
+
+	public BigDecimal getAvailableSpendingBalance() {
+		return availableSpendingBalance;
+	}
+
+	public Map<String, List<VendingMachineItem>> getItems() {
+		return items;
 	}
 
 }
