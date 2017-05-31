@@ -22,13 +22,23 @@ public class VendingMachine {
 	}
 
 	// Method needed to handle the purchase of an item. This removes item from ArrayList and subtracts its cost from availableSpendingBalance.
-	public List<VendingMachineItem> customerMakesPurchase(String slotName) {
-		ProductImport productList = new ProductImport();
-		items = productList.readInventory("/Users/antoinnemckinney/workspace/team2-java-module1-capstone/module1-capstone/vendingmachine.csv");
-		availableSpendingBalance.subtract(items.get(slotName).remove(0).getCost());
+	public VendingMachineItem customerMakesPurchase(String slotName) {
+		VendingMachineItem item = null;
+		if(items.containsKey(slotName)){ // If the slot exists
+			if( ! items.get(slotName).isEmpty()) { // If the slot has items
+				if(availableSpendingBalance.compareTo(items.get(slotName).get(0).getCost()) >= 0){ // If they can afford it
+					item = items.get(slotName).remove(0);
+					availableSpendingBalance = availableSpendingBalance.subtract(item.getCost());
+				} else {
+					//throw new NotEnoughFundsException();
+				}
+			} else {
+				
+			}
+		}
+
 		
-			
-		return items.get(slotName);
+		return item;
 	}
 
 	// Checking the list if it contains a value for the slotName provided
@@ -36,11 +46,6 @@ public class VendingMachine {
 		
 		
 		return items.containsKey(slotName);
-	}
-
-	// Returns the value of the remaining balance of available funds to spend
-	public BigDecimal returnChange() {
-		return availableSpendingBalance;
 	}
 
 	// Print the message for the coins that will dispense to the customer

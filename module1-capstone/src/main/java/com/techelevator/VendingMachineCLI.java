@@ -44,7 +44,7 @@ public class VendingMachineCLI {
 		this.menu = menu;
 		ProductImport pI = new ProductImport();
 		listOfProducts = pI.readInventory(
-				"/Users/antoinnemckinney/workspace/team2-java-module1-capstone/module1-capstone/vendingmachine.csv");
+				"vendingmachine.csv");
 		vm = new VendingMachine(listOfProducts);
 	}
 
@@ -116,7 +116,9 @@ public class VendingMachineCLI {
 						System.out.println("\nYour Updated Spending Balance: $"+ vm.getAvailableSpendingBalance());
 					}//closes whileLoop for customer money feed
 
-				}//close if-statement for Feed Money
+				} else if(choice2.equals(VIEW_ITEMS_MENU_OPTION_EXIT)) {//close if-statement for Feed Money
+					break;
+				}
 				while (true) {
 					String choice3 = (String) menu.getChoiceFromOptions(MAIN_MENU_OPTIONS3);
 
@@ -128,7 +130,7 @@ public class VendingMachineCLI {
 						
 						//vm.customerMakesPurchase(slotName);
 						
-					} else if (choice3.equals(MAIN_MENU_OPTION_EXIT_PROGRAM)) {
+					} else if (choice3.equals(VIEW_ITEMS_MENU_OPTION_EXIT)) {
 						break;
 					}
 					while (true) {
@@ -136,7 +138,7 @@ public class VendingMachineCLI {
 
 						if (choice4.equals(VIEW_ITEMS_MENU_OPTION_CLOSE_TRANSACTION)) {
 							System.out.println("Bye");
-						} else if (choice4.equals(MAIN_MENU_OPTION_EXIT_PROGRAM)) {
+						} else if (choice4.equals(VIEW_ITEMS_MENU_OPTION_EXIT)) {
 							break;
 						}
 

@@ -4,17 +4,13 @@ import java.math.BigDecimal;
 
 public class MakeChange {
 
-	BigDecimal numOfQuarters = new BigDecimal(0.00);
-	BigDecimal numOfDimes = new BigDecimal(0.00);
-	BigDecimal numOfNickels = new BigDecimal(0.00);
+	BigDecimal numOfQuarters = new BigDecimal("0");
+	BigDecimal numOfDimes = new BigDecimal("0");
+	BigDecimal numOfNickels = new BigDecimal("0");
 
-	BigDecimal quarter = new BigDecimal(0.25);
-	BigDecimal dime = new BigDecimal(0.10);
-	BigDecimal nickel = new BigDecimal(0.10);
-
-	public MakeChange() {
-
-	}
+	BigDecimal quarter = new BigDecimal("0.25");
+	BigDecimal dime = new BigDecimal("0.10");
+	BigDecimal nickel = new BigDecimal("0.05");
 
 	// can this machine return bills before change if given bigger bills
 	public String changeAmount(BigDecimal amtToReturn) {
